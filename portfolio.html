@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turaga Krishna Vamsi - Portfolio</title>
+    <!-- Removed Poppins font link -->
+    <style>
+        /* CSS Variables for a consistent, professional color palette */
+        :root {
+            --primary-color: #004d7a;
+            --secondary-color: #0077b5;
+            --accent-color: #4a90e2;
+            --background-color: #f5f7fa;
+            --card-bg: #fff;
+            --text-color: #333;
+            --dark-text: #1a1a1a;
+            --border-radius: 12px;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 30px 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; /* Prevents horizontal scroll from animations */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+
+        /* Header with a stylish, professional gradient */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 70px 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transform: translateY(0);
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+        }
+
+        header:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .header h1 {
+            font-size: clamp(2.5em, 5vw, 4em);
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: clamp(1em, 2vw, 1.2em);
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            transform: translateY(-5px);
+            color: var(--accent-color);
+        }
+
+        /* Section styles with modern shadows and transitions */
+        section {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            opacity: 0; /* Hidden by default for the fade-in animation */
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2em;
+            font-weight: 600;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .objective p,
+        .experience ul,
+        .project-item p,
+        .skills ul,
+        .education ul,
+        .achievements ul {
+            font-size: 1em;
+            color: var(--text-color);
+        }
+
+        .experience-item,
+        .project-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover,
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .experience-item h3,
+        .project-item h3 {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .experience-item .date,
+        .project-item .date {
+            font-size: 0.95em;
+            color: #777;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-list li {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .skill-list li:hover {
+            transform: scale(1.05);
+            background-color: var(--accent-color);
+        }
+
+        .project-item ul {
+            margin-top: 15px;
+            padding-left: 20px;
+            list-style-type: '— ';
+        }
+        
+        .project-item li {
+            margin-bottom: 5px;
+        }
+
+        .education-list li,
+        .achievement-list li {
+            margin-bottom: 20px;
+        }
+        
+        .education-list li:last-child,
+        .achievement-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Font Awesome Icons via CDN */
+        .icon {
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Font Awesome 5 Brands";
+        }
+        .icon-linkedin::before { content: "\f08c"; }
+        .icon-github::before { content: "\f09b"; }
+        .icon-envelope::before { content: "\f0e0"; font-family: "Font Awesome 5 Free"; }
+        .icon-phone::before { content: "\f095"; font-family: "Font Awesome 5 Free"; }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header {
+                padding: 50px 15px;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .experience-item,
+            .project-item {
+                padding: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Turaga Krishna Vamsi</h1>
+            <p>Software Engineer | AI/ML Enthusiast</p>
+            <div class="contact-info">
+                <a href="https://linkedin.com/in/krishna-vamsi-turaga-73470b260" target="_blank">
+                    <i class="fab fa-linkedin icon-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/Sharma2120" target="_blank">
+                    <i class="fab fa-github icon-github"></i> GitHub
+                </a>
+                <a href="mailto:vijaykrishna94132@gmail.com">
+                    <i class="fas fa-envelope icon-envelope"></i> Email
+                </a>
+                <a href="tel:+919959964323">
+                    <i class="fas fa-phone icon-phone"></i> Phone
+                </a>
+            </div>
+        </header>
+
+        <section class="objective">
+            <h2>Career Objective</h2>
+            <p>
+                As a motivated software engineer, I aim to apply my programming and problem-solving skills in full-stack development and AI technologies to drive impactful projects and solutions. With a strong passion for continuous learning, I seek to contribute innovative, efficient solutions while advancing my career in a dynamic, tech-driven environment.
+            </p>
+        </section>
+
+        <section class="skills">
+            <h2>Skills</h2>
+            <ul class="skill-list">
+                <li>Machine Learning</li>
+                <li>Python</li>
+                <li>Django</li>
+                <li>Deep Learning</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>MySQL</li>
+            </ul>
+        </section>
+
+        <section class="experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <h3>Machine Learning Intern</h3>
+                <p><strong>Web-Walk Infosys</strong> - Madurai, India</p>
+                <ul>
+                    <li>Analyzed YouTube trending video data to predict trending content.</li>
+                    <li>Utilized algorithms such as Random Forest and Decision Trees for predictive modeling.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2>Projects</h2>
+            <div class="project-item">
+                <h3>Intruder Detection System</h3>
+                <p>An AI system that utilizes sensors and deep learning neural networks to detect potential intruders and provide real-time alerts for enhanced security.</p>
+            </div>
+            <div class="project-item">
+                <h3>Design of Electric Vehicle to Reduce Emissions</h3>
+                <p>Focused on optimizing energy efficiency, enhancing battery performance, and reducing environmental impact through lightweight materials, aerodynamic shapes, and advanced powertrain systems.</p>
+            </div>
+        </section>
+        
+        <section class="education">
+            <h2>Education</h2>
+            <ul class="education-list">
+                <li>
+                    <strong>Bachelors Of Technology in Artificial Intelligence and Machine Learning</strong>
+                    <p>Kalasalingam Academy of Research and Education, Madurai, Tamilnadu.</p>
+                    <p>CGPA: 7.88</p>
+                </li>
+                <li>
+                    <strong>Board of Intermediate</strong>
+                    <p>Sastra Junior College, Vijayawada, AndhraPradesh.</p>
+                    <p>Percentage: 91.3%</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="achievements">
+            <h2>Achievements & Certificates</h2>
+            <ul class="achievement-list">
+                <li>Foundation Associate from Oracle University.</li>
+                <li>Computer Vision In Microsoft Azure.</li>
+                <li>Demonstrated strong leadership, problem-solving, and analytical skills.</li>
+                <li>Proven ability as a team leader, maintaining high coordination in a professional environment to drive successful project execution.</li>
+            </ul>
+        </section>
+    </div>
+    
+    <script>
+        // JavaScript for scroll-based fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
